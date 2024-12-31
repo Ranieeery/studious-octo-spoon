@@ -1,22 +1,25 @@
 import openai
 import os
+from openai import OpenAI
 
 from dotenv import load_dotenv, find_dotenv
 _ = load_dotenv(find_dotenv())
 
-openai.api_key = os.getenv('OPENAI_API_KEY')
-
 client = openai.OpenAI()
+
 
 def get_completion(prompt, model="gpt-3.5-turbo"):
     messages = [{"role": "user", "content": prompt}]
-    response = openai.ChatCompletion.create(
+    response = client.chat.completions.create(
         model=model,
         messages=messages,
-        temperature=0,
+        temperature=0
     )
-    return response.choices[0].message["content"]
-  
+    return response.choices[0].message.content
+
+# Generate a marketing product description from a product fact sheet
+
+
 fact_sheet_chair = """
 OVERVIEW
 - Part of a beautiful family of mid-century inspired office furniture, 
@@ -67,8 +70,11 @@ Write a product description based on the information
 provided in the technical specifications delimited by 
 triple backticks.
 
+Use at most 50 words.
+
 Technical specifications: ```{fact_sheet_chair}```
 """
 response = get_completion(prompt)
 print(response)
 
+print(len(response.split()))
