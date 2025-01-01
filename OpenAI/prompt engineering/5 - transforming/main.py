@@ -261,14 +261,6 @@ Actual solution:
 response = get_completion(prompt)
 print(response)
 
-# Model Limitations: Hallucinations
-
-prompt = f"""
-Tell me about AeroGlide UltraSlim Smart Toothbrush by Boie
-"""
-response = get_completion(prompt)
-print(response)
-
 text = f"""
 Got this for my daughter for her birthday cuz she keeps taking 
 mine from my room.  Yes, adults also like pandas too.  She takes 
