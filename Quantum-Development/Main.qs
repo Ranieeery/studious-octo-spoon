@@ -1,5 +1,16 @@
 import Microsoft.Quantum.Diagnostics.*;
 
-operation Main() : Unit {
+operation Main() : (Result, Result) {
+    use (q1, q2) = (Qubit(), Qubit());
+
+    H(q1);
+    CNOT(q1, q2);
+
+    DumpMachine();
+    let (m1, m2) = (M(q1), M(q2));
+    Reset(q1);
+    Reset(q2);
+
     Message("Hello quantum world!");
+    return (m1, m2);
 }
