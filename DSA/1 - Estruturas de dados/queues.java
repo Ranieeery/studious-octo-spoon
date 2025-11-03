@@ -2,7 +2,7 @@
 import java.util.LinkedList;
 import java.util.Queue;
 
-public class queues {
+public class Queues {
     public static void main(String[] args) {
         Queue<Integer> queue = new LinkedList<Integer>();
 
